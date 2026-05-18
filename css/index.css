@@ -1,0 +1,70 @@
+body {
+  background: lightblue;
+}
+
+nav {
+  background: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  border-bottom: 2px solid #ccc;
+  position: sticky; /* optional stretch goal */
+  top: 0;           /* optional stretch goal */
+}
+
+nav a {
+  text-decoration: none;
+  color: #0055aa;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+section {
+  padding: 20px;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #003366;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #222;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+#Experience ul {
+  list-style: none;
+  padding: 0;
+}
+
+#Experience li {
+  background: #e8e8e8;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#Connect ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+#Connect a {
+  text-decoration: none;
+  color: #0055aa;
+  font-weight: bold;
+}
+
