@@ -1,4 +1,4 @@
-# intro26.2
+# ignacioballerio-intro26.2
 Portfolio project for Intro to Programming course with Code the Dream
-
-Update
+Ignacio Oscar Ballerio
+    
