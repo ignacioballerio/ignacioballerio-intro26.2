@@ -1,5 +1,8 @@
 body {
   background: lightblue;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 nav {
@@ -68,6 +71,11 @@ h2 {
   font-weight: bold;
 }
 
+#Connect img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+
 /* Skills section layout */
 #Skills ul {
   display: flex;
@@ -84,4 +92,11 @@ h2 {
   padding: 8px 12px;
   border-radius: 6px;
   font-weight: 500;
+}
+
+footer {
+  text-align: center;       /* ✔ CENTER FOOTER */
+  margin-top: 40px;
+  padding: 20px;
+  font-weight: bold;
 }
