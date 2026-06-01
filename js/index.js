@@ -177,7 +177,7 @@ for (let i = 0; i < skills.length; i++) {
   skillsList.appendChild(skill);
 }
 
-// ----- LEAVE A MESSAGE FORM -----
+// LEAVE A MESSAGE FORM 
 
 const messageForm = document.forms["leave_message"];
 
@@ -191,6 +191,9 @@ messageForm.addEventListener("submit", function (event) {
   const messageSection = document.getElementById("messages");
   const messageList = messageSection.querySelector("ul");
 
+  // Show section when first message is added
+  messageSection.style.display = "block";
+
   const newMessage = document.createElement("li");
 
   newMessage.innerHTML = `
@@ -198,7 +201,7 @@ messageForm.addEventListener("submit", function (event) {
     <span> wrote: ${message}</span>
   `;
 
-  // Add remove button
+  // REMOVE BUTTON 
   const removeButton = document.createElement("button");
   removeButton.innerText = "remove";
   removeButton.type = "button";
@@ -206,9 +209,35 @@ messageForm.addEventListener("submit", function (event) {
   removeButton.addEventListener("click", function () {
     const entry = removeButton.parentNode;
     entry.remove();
+
+    // Hide section if empty
+    if (messageList.children.length === 0) {
+      messageSection.style.display = "none";
+    }
   });
 
+  // EDIT BUTTON
+  const editButton = document.createElement("button");
+  editButton.innerText = "edit";
+  editButton.type = "button";
+
+  editButton.addEventListener("click", function () {
+    const entry = editButton.parentNode;
+    const messageSpan = entry.querySelector("span");
+
+    const currentMessage = messageSpan.innerText.replace(" wrote: ", "");
+    const newMessageText = prompt("Edit your message:", currentMessage);
+
+    if (newMessageText !== null) {
+      messageSpan.innerText = ` wrote: ${newMessageText}`;
+    }
+  });
+
+  // Append buttons
   newMessage.appendChild(removeButton);
+  newMessage.appendChild(editButton);
+
+  // Add message to list
   messageList.appendChild(newMessage);
 
   // Clear the form
