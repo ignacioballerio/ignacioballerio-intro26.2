@@ -177,3 +177,41 @@ for (let i = 0; i < skills.length; i++) {
   skillsList.appendChild(skill);
 }
 
+// ----- LEAVE A MESSAGE FORM -----
+
+const messageForm = document.forms["leave_message"];
+
+messageForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = event.target.usersName.value;
+  const email = event.target.usersEmail.value;
+  const message = event.target.usersMessage.value;
+
+  const messageSection = document.getElementById("messages");
+  const messageList = messageSection.querySelector("ul");
+
+  const newMessage = document.createElement("li");
+
+  newMessage.innerHTML = `
+    <a href="mailto:${email}">${name}</a>
+    <span> wrote: ${message}</span>
+  `;
+
+  // Add remove button
+  const removeButton = document.createElement("button");
+  removeButton.innerText = "remove";
+  removeButton.type = "button";
+
+  removeButton.addEventListener("click", function () {
+    const entry = removeButton.parentNode;
+    entry.remove();
+  });
+
+  newMessage.appendChild(removeButton);
+  messageList.appendChild(newMessage);
+
+  // Clear the form
+  event.target.reset();
+});
+
