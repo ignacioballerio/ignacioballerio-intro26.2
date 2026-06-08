@@ -244,3 +244,58 @@ messageForm.addEventListener("submit", function (event) {
   event.target.reset();
 });
 
+// LESSON 9 - API FETCH
+
+const GITHUB_USERNAME = "ignacioballerio"; // tu usuario de GitHub
+
+// 1. Fetch to repos from GitHub API
+fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`)
+  .then(response => response.json()) // convertir respuesta a JSON
+  .then(data => {
+    const repositories = data; // guardar JSON en variable
+    console.log("Mis repos:", repositories); // ver en consola
+
+    // STEP 5 - Ordenar alfabéticamente
+    repositories.sort((a, b) => a.name.localeCompare(b.name));
+
+    // STEP 6 — Mostrar solo los últimos 5 repos
+    repositories.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    const latestFive = repositories.slice(0, 5);
+
+    // 2. Mostrar repos en la sección Projects
+    const projectSection = document.getElementById("projects");
+    const projectList = projectSection.querySelector("ul");
+
+    for (let i = 0; i < latestFive.length; i++) {
+      const project = document.createElement("li");
+
+      const repoName = latestFive[i].name;
+      const repoUrl = latestFive[i].html_url;
+      const repoDescription = latestFive[i].description || "No description available";
+      const repoDate = new Date(latestFive[i].created_at).toLocaleDateString();
+
+      project.innerHTML = `
+        <a href="${repoUrl}" target="_blank">
+          <strong>${repoName}</strong>
+        </a>
+        <br>
+        <small>📅 Created: ${repoDate}</small>
+        <br>
+        <small>📄 ${repoDescription}</small>
+      `;
+
+      projectList.appendChild(project);
+    } // ← closes the FOR loop
+  }) // ← closes the .then(data => { ... })
+
+  .catch(error => {
+    console.error("Error al traer repos:", error);
+
+    const projectSection = document.getElementById("projects");
+    const projectList = projectSection.querySelector("ul");
+
+    const errorItem = document.createElement("li");
+    errorItem.innerText = "⚠️ No se pudieron cargar los repositorios";
+    projectList.appendChild(errorItem);
+  });
+
