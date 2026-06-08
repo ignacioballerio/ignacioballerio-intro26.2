@@ -9,8 +9,8 @@ nav {
   justify-content: center;
   gap: 25px;
   border-bottom: 2px solid #ccc;
-  position: sticky; /* optional stretch goal */
-  top: 0;           /* optional stretch goal */
+  position: sticky;
+  top: 0;
 }
 
 nav a {
@@ -49,7 +49,6 @@ h2 {
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 8px;
-
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -89,3 +88,73 @@ h2 {
 #messages {
   display: none;
 }
+
+/* --- PROJECTS (Estilo Minimalista) --- */
+
+#projects ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#projects li {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#projects li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+#projects a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+#projects a:hover {
+  text-decoration: underline;
+}
+
+#projects small {
+  color: #555;
+}
+
+/* Formulario (Leave a Message) */
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form button {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+form button:hover {
+  background: #155bb5;
+}
+
+#projects ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
