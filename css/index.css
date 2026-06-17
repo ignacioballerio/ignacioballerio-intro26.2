@@ -177,4 +177,20 @@ footer {
   }
 }
 
+/* --- Stretch Goal: hide messages when empty --- */
+#messages {
+  display: none;
+}
+
+/* CONNECT ICONS */
+#Connect img {
+  width: 40px;
+  height: auto;
+  transition: transform 0.2s;
+}
+
+#Connect img:hover {
+  transform: scale(1.1);
+}
+
 
