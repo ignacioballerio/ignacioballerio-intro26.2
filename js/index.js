@@ -1,150 +1,3 @@
-// Week 7 – Functions Practice
-
-function greet(name) {
-  return `Hello, ${name}!`;
-}
-
-function add(a, b) {
-  return a + b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-console.log(greet("Ignacio"));
-console.log(add(5, 7));
-console.log(multiply(3, 4));
-
-//rectangle area function
-function rectangleArea(width, height) {
-  return width * height;
-}
-
-console.log(rectangleArea(5, 10)); // 50
-
-//even number check function
-function isEven(num) {
-  return num % 2 === 0;
-}
-console.log(isEven(4)); // true
-console.log(isEven(7)); // false
-
-//convert Celsius to Fahrenheit
-function celsiusToFahrenheit(celsius) {
-  return (celsius * 9) / 5 + 32;
-}
-console.log(celsiusToFahrenheit(20)); // 68  
- 
-//number max of 2 
-function maxOfTwo(a, b) {
-  if (a > b) {
-    return a;
-  } else {
-    return b;
-  }
-}
-
-console.log(maxOfTwo(10, 7)); // 10
-
-// number max of 3
-
-function maxOfThree(a, b, c) {
-  if (a >= b && a >= c) {
-    return a;
-  } else if (b >= a && b >= c) {
-    return b;
-  } else {
-    return c;
-  }
-}
-
-console.log(maxOfThree(3, 9, 4)); // 9
-
-//start with vowel check function
-function startsWithVowel(str) {
-  const firstChar = str.charAt(0).toLowerCase();
-  return ['a', 'e', 'i', 'o', 'u'].includes(firstChar);
-}
-console.log(startsWithVowel("Apple")); // true
-console.log(startsWithVowel("banana")); // false
-
-//sum of array function
-function sumArray(numbers) {
-  let total = 0;
-  for (let num of numbers) {
-    total += num;
-  }
-  return total;
-}
-
-console.log(sumArray([1, 2, 3, 4])); // 10
-
-//max of array function 
-function maxInArray(numbers) {
-  let max = numbers[0];
-  for (let num of numbers) {
-    if (num > max) {
-      max = num;
-    }
-  }
-  return max;
-}
-
-console.log(maxInArray([3, 9, 2, 7])); // 9
-
-//count words in string function
-function countWord(words, target) {
-  let count = 0;
-  for (let word of words) {
-    if (word === target) {
-      count++;
-    }
-  }
-  return count;
-}
-
-console.log(countWord(["dog", "cat", "dog", "bird"], "dog")); // 2
-
-// even numbers in array function
-function filterEvens(numbers) {
-  const result = [];
-  for (let num of numbers) {
-    if (num % 2 === 0) {
-      result.push(num);
-    }
-  }
-  return result;
-}
-
-console.log(filterEvens([1, 2, 3, 4, 5, 6])); // [2, 4, 6]
-
-
-//reverse words 
-
-function reverseWord(word) {
-  let reversed = "";
-  for (let i = word.length - 1; i >= 0; i--) {
-    reversed += word[i];
-  }
-  return reversed;
-}
-
-console.log(reverseWord("Ignacio")); // oicangI
-
-//count letters
-function countLetters(sentence) {
-  let count = 0;
-  for (let char of sentence) {
-    if (char !== " ") {
-      count++;
-    }
-  }
-  return count;
-}
-
-console.log(countLetters("hola mundo")); // 9
-
 //DOM
 // Create footer element
 const footer = document.createElement("footer");
@@ -178,7 +31,6 @@ for (let i = 0; i < skills.length; i++) {
 }
 
 // LEAVE A MESSAGE FORM 
-
 const messageForm = document.forms["leave_message"];
 
 messageForm.addEventListener("submit", function (event) {
@@ -245,24 +97,22 @@ messageForm.addEventListener("submit", function (event) {
 });
 
 // LESSON 9 - API FETCH
+const GITHUB_USERNAME = "ignacioballerio";
 
-const GITHUB_USERNAME = "ignacioballerio"; // tu usuario de GitHub
-
-// 1. Fetch to repos from GitHub API
+// 1. Fetch repos from GitHub API
 fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`)
-  .then(response => response.json()) // convertir respuesta a JSON
+  .then(response => response.json())
   .then(data => {
-    const repositories = data; // guardar JSON en variable
-    console.log("Mis repos:", repositories); // ver en consola
+    const repositories = data;
 
-    // STEP 5 - Ordenar alfabéticamente
+    // Sort alphabetically
     repositories.sort((a, b) => a.name.localeCompare(b.name));
 
-    // STEP 6 — Mostrar solo los últimos 5 repos
+    // Show only the latest 5 repos
     repositories.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     const latestFive = repositories.slice(0, 5);
 
-    // 2. Mostrar repos en la sección Projects
+    // Show repos in Projects section
     const projectSection = document.getElementById("projects");
     const projectList = projectSection.querySelector("ul");
 
@@ -285,9 +135,8 @@ fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos`)
       `;
 
       projectList.appendChild(project);
-    } // ← closes the FOR loop
-  }) // ← closes the .then(data => { ... })
-
+    }
+  })
   .catch(error => {
     console.error("Error al traer repos:", error);
 
